@@ -1,0 +1,37 @@
+<header class="mobile-topbar d-lg-none">
+  <button class="icon-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Open menu">
+    <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
+  </button>
+  <a href="/" aria-label="X home"><img src="/images/logo.png" alt="X" class="mobile-logo"></a>
+  <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Subscribe</a>
+</header>
+
+<div class="offcanvas offcanvas-start x-offcanvas" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+  <div class="offcanvas-header">
+    <div class="user-summary">
+      <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
+      <div id="mobileMenuLabel" class="fw-bold">X User</div>
+      <small class="text-secondary">@username</small>
+    </div>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="mobile-menu-links">
+      <li><a href="/profile"><i class="fa-regular fa-user" aria-hidden="true"></i>Profile</a></li>
+      <li><a href="/bookmarks"><i class="fa-regular fa-bookmark" aria-hidden="true"></i>Bookmarks</a></li>
+      <li><a href="/settings"><i class="fa-solid fa-gear" aria-hidden="true"></i>Settings</a></li>
+      <li><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>Log out</a></li>
+    </ul>
+  </div>
+</div>
+
+<nav class="mobile-bottom-bar d-lg-none" aria-label="Mobile navigation">
+  <a href="/" aria-label="Home"><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+  <a href="/explore" aria-label="Explore"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a>
+  <a href="/notifications" aria-label="Notifications"><i class="fa-regular fa-bell" aria-hidden="true"></i></a>
+  <a href="/messages" aria-label="Chat"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+</nav>
+
+<a href="#" class="compose-button d-lg-none" aria-label="Compose post">
+  <i class="fa-solid fa-feather" aria-hidden="true"></i>
+</a>

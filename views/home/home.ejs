@@ -1,0 +1,33 @@
+<% layout("layouts/boilerplate") %>
+<section class="home-tabs" aria-label="Timeline tabs">
+  <a class="home-tab active" href="/">For you</a>
+  <a class="home-tab" href="/">Following</a>
+  <button class="home-add-button" type="button" aria-label="Add timeline">
+    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+  </button>
+</section>
+
+<section class="compose-box" aria-label="Create a post">
+  <i class="fa-solid fa-circle-user compose-avatar" aria-hidden="true"></i>
+  <div class="compose-content">
+    <textarea class="compose-input" rows="1" placeholder="What's happening?" aria-label="What's happening?"></textarea>
+    <button class="reply-permission" type="button">
+      <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
+      Everyone can reply
+    </button>
+    <div class="compose-actions">
+      <div class="compose-tools" aria-label="Post options">
+        <button type="button" aria-label="Add image"><i class="fa-regular fa-image" aria-hidden="true"></i></button>
+        <button type="button" aria-label="Add GIF"><i class="fa-regular fa-file-image" aria-hidden="true"></i><span>GIF</span></button>
+        <button type="button" aria-label="Add poll"><i class="fa-solid fa-sliders" aria-hidden="true"></i></button>
+        <button type="button" aria-label="Add emoji"><i class="fa-regular fa-face-smile" aria-hidden="true"></i></button>
+        <button type="button" aria-label="Schedule post"><i class="fa-regular fa-calendar-plus" aria-hidden="true"></i></button>
+        <button type="button" aria-label="Add location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></button>
+        <button type="button" aria-label="Add content warning"><i class="fa-regular fa-flag" aria-hidden="true"></i></button>
+      </div>
+      <button class="btn compose-post-button" type="button">Post</button>
+    </div>
+  </div>
+</section>
+
+<button class="show-posts-button" type="button">Show 35 posts</button>

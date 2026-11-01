@@ -1,0 +1,19 @@
+<% layout("layouts/error_layout") %>
+<main class="d-flex align-items-center justify-content-center min-vh-100 py-5">
+  <div class="card border-0 shadow-sm text-center error-page-card">
+    <div class="card-body p-4 p-md-5">
+      <div class="mb-4">
+        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-danger-subtle text-danger error-icon">
+          <i class="fa-solid fa-triangle-exclamation fa-2x" aria-hidden="true"></i>
+        </span>
+      </div>
+      <p class="text-uppercase text-danger fw-semibold mb-2">Something went wrong</p>
+      <h1 class="display-5 fw-bold mb-3">Error <%= statusCode %></h1>
+      <p class="text-secondary mb-4"><%= message %></p>
+      <a class="btn btn-primary px-4" href="/">
+        <i class="fa-solid fa-house me-2" aria-hidden="true"></i>
+        Back to homepage
+      </a>
+    </div>
+  </div>
+</main>
