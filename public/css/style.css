@@ -44,6 +44,54 @@ a:hover {
   padding: 1rem;
 }
 
+.auth-container {
+  width: 100%;
+  max-width: 520px;
+}
+
+.auth-container .alert {
+  margin: 0 0 1rem !important;
+}
+
+.auth-card {
+  border-radius: 1.25rem;
+  background: #0d1117;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--x-muted);
+  font-size: 0.9rem;
+}
+
+.auth-brand img {
+  object-fit: contain;
+}
+
+.auth-tabs {
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: #16181c;
+}
+
+.auth-tabs .nav-link {
+  border-radius: 999px;
+  color: var(--x-muted);
+  font-weight: 700;
+}
+
+.auth-tabs .nav-link:hover {
+  color: var(--x-text);
+}
+
+.auth-tabs .nav-link.active {
+  background: #fff;
+  color: #111;
+}
+
 /* Sidebar */
 .sidebar-shell {
   min-height: 100vh;
@@ -68,7 +116,8 @@ a:hover {
 }
 
 .sidebar-nav a,
-.mobile-menu-links a {
+.mobile-menu-links a,
+.mobile-menu-links .mobile-menu-link-button {
   display: flex;
   align-items: center;
   gap: 1.4rem;
@@ -79,8 +128,17 @@ a:hover {
 }
 
 .sidebar-nav a:hover,
-.mobile-menu-links a:hover {
+.mobile-menu-links a:hover,
+.mobile-menu-links .mobile-menu-link-button:hover {
   background: var(--x-hover);
+}
+
+.mobile-menu-links .mobile-menu-link-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
 }
 
 .sidebar-nav i {
@@ -137,6 +195,14 @@ a:hover {
 .user-avatar {
   color: var(--x-muted);
   font-size: 2.2rem;
+}
+
+.user-avatar-image {
+  width: 2.2rem;
+  height: 2.2rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Rightbar */

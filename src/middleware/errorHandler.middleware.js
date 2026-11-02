@@ -5,7 +5,7 @@ export const notFound = (req,res,next) =>{
 
 export const errorHandler = (err,req,res,next)=>{
     console.error(err)
-    if(res.headerSent){return next(err)}
+    if(res.headersSent){return next(err)}
 
     const statusCode = err.statusCode || 500
     const message = err.message || "Something went wrong"

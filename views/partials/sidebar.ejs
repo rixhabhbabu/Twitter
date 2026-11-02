@@ -10,8 +10,19 @@
   </nav>
   <a href="#" class="btn post-button">Post</a>
   <div class="sidebar-user">
-    <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
-    <div><strong>X User</strong><small>@username</small></div>
-    <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+    <% if (currentUser && currentUser.profilePicture) { %>
+      <img class="user-avatar-image" src="<%= currentUser.profilePicture %>" alt="">
+    <% } else { %>
+      <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
+    <% } %>
+    <div>
+      <strong><%= currentUser ? currentUser.displayName : "Guest" %></strong>
+      <small><%= currentUser ? `@${currentUser.username}` : "Log in to personalize" %></small>
+    </div>
+    <% if (currentUser) { %>
+      <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+    <% } else { %>
+      <a href="/login" aria-label="Log in"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i></a>
+    <% } %>
   </div>
 </div>

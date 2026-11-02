@@ -4,10 +4,12 @@ import path from "node:path";
 import ejsMate from "ejs-mate";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import flash from "connect-flash";
 import methodOverride from "method-override";
 import connectDB from "./src/config/db.config.js";
+import flash from "./src/middleware/flash.middleware.js";
+import { loadCurrentUser } from "./src/middleware/auth.middleware.js";
 import { notFound, errorHandler } from "./src/middleware/errorHandler.middleware.js";
+import authRouter from "./src/routes/auth.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -32,6 +34,7 @@ app.use(
     },
   }),
 );
+app.use(loadCurrentUser);
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -42,6 +45,8 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   res.render("home/home");
 });
+
+app.use(authRouter);
 
 app.use(errorHandler);
 app.use(notFound);

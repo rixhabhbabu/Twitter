@@ -9,18 +9,33 @@
 <div class="offcanvas offcanvas-start x-offcanvas" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
   <div class="offcanvas-header">
     <div class="user-summary">
-      <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
-      <div id="mobileMenuLabel" class="fw-bold">X User</div>
-      <small class="text-secondary">@username</small>
+      <% if (currentUser && currentUser.profilePicture) { %>
+        <img class="user-avatar-image" src="<%= currentUser.profilePicture %>" alt="">
+      <% } else { %>
+        <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
+      <% } %>
+      <div>
+        <div id="mobileMenuLabel" class="fw-bold"><%= currentUser ? currentUser.displayName : "Welcome to X" %></div>
+        <small class="text-secondary"><%= currentUser ? `@${currentUser.username}` : "Sign in to join the conversation" %></small>
+      </div>
     </div>
     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
   </div>
   <div class="offcanvas-body">
     <ul class="mobile-menu-links">
-      <li><a href="/profile"><i class="fa-regular fa-user" aria-hidden="true"></i>Profile</a></li>
-      <li><a href="/bookmarks"><i class="fa-regular fa-bookmark" aria-hidden="true"></i>Bookmarks</a></li>
-      <li><a href="/settings"><i class="fa-solid fa-gear" aria-hidden="true"></i>Settings</a></li>
-      <li><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>Log out</a></li>
+      <% if (currentUser) { %>
+        <li><a href="/profile"><i class="fa-regular fa-user" aria-hidden="true"></i>Profile</a></li>
+        <li><a href="/bookmarks"><i class="fa-regular fa-bookmark" aria-hidden="true"></i>Bookmarks</a></li>
+        <li><a href="/settings"><i class="fa-solid fa-gear" aria-hidden="true"></i>Settings</a></li>
+        <li>
+          <form action="/logout" method="POST">
+            <button class="mobile-menu-link-button" type="submit"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>Log out</button>
+          </form>
+        </li>
+      <% } else { %>
+        <li><a href="/login"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i>Log in</a></li>
+        <li><a href="/register"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>Create account</a></li>
+      <% } %>
     </ul>
   </div>
 </div>

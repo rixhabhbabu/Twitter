@@ -1,0 +1,8 @@
+<ul class="nav nav-pills nav-fill auth-tabs mb-4" aria-label="Account access">
+  <li class="nav-item">
+    <a class="nav-link <%= activeAuthTab === 'login' ? 'active' : '' %>" href="/login" <% if (activeAuthTab === "login") { %>aria-current="page"<% } %>>Log in</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link <%= activeAuthTab === 'register' ? 'active' : '' %>" href="/register" <% if (activeAuthTab === "register") { %>aria-current="page"<% } %>>Create account</a>
+  </li>
+</ul>
