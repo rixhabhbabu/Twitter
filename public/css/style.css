@@ -238,11 +238,68 @@ a:hover {
   background: linear-gradient(135deg, #1d9bf0, #15202b 65%, #0d1117);
 }
 
+.profile-cover-image {
+  display: block;
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  background: var(--x-surface);
+}
+
 .profile-page-content {
   position: relative;
   min-height: 12rem;
   padding: 3.5rem 1rem 1.5rem;
   border-bottom: 1px solid var(--x-border);
+}
+
+.profile-edit-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.profile-bio {
+  margin: 0.75rem 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.profile-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  color: var(--x-muted);
+}
+
+.profile-details > * {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-wrap: anywhere;
+}
+
+.profile-follow-counts {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  color: var(--x-muted);
+}
+
+.profile-follow-counts strong {
+  color: var(--x-text);
+}
+
+.profile-edit-form {
+  padding: 1.5rem;
+}
+
+.profile-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
 }
 
 .profile-page-avatar,

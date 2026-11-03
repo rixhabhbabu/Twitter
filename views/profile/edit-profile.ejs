@@ -1,0 +1,56 @@
+<% layout("layouts/boilerplate") %>
+
+<section class="edit-profile-page">
+  <div class="profile-page-header">
+    <a class="profile-back-link" href="/profile" aria-label="Cancel editing and go back">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <div>
+      <h1 class="h5 mb-0">Edit profile</h1>
+      <small class="text-secondary">Update how people see you</small>
+    </div>
+  </div>
+
+  <form class="profile-edit-form" action="/profile?_method=PATCH" method="POST">
+
+    <div class="mb-4">
+      <label class="form-label" for="displayName">Display name</label>
+      <input class="form-control" id="displayName" name="displayName" type="text" maxlength="50" value="<%= user.displayName %>" autocomplete="name" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="username">Username</label>
+      <div class="input-group">
+        <span class="input-group-text">@</span>
+        <input class="form-control" id="username" name="username" type="text" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+" value="<%= user.username %>" autocomplete="username" required>
+      </div>
+      <div class="form-text">Use 3–30 letters, numbers, or underscores.</div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="bio">Bio</label>
+      <textarea class="form-control" id="bio" name="bio" rows="4" maxlength="160"><%= user.bio || "" %></textarea>
+      <div class="form-text">Up to 160 characters.</div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="dateOfBirth">Date of birth</label>
+      <input class="form-control" id="dateOfBirth" name="dateOfBirth" type="date" max="<%= new Date().toISOString().slice(0, 10) %>" value="<%= user.dateOfBirth ? new Date(user.dateOfBirth).toISOString().slice(0, 10) : "" %>">
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="location">Location</label>
+      <input class="form-control" id="location" name="location" type="text" maxlength="100" value="<%= user.location || "" %>" autocomplete="address-level2">
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="website">Website</label>
+      <input class="form-control" id="website" name="website" type="url" maxlength="2048" value="<%= user.website || "" %>" placeholder="https://example.com" autocomplete="url">
+    </div>
+
+    <div class="profile-edit-actions">
+      <a class="btn btn-outline-light rounded-pill" href="/profile">Cancel</a>
+      <button class="btn btn-light rounded-pill fw-bold" type="submit">Save</button>
+    </div>
+  </form>
+</section>
