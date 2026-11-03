@@ -10,6 +10,7 @@ import flash from "./src/middleware/flash.middleware.js";
 import { loadCurrentUser } from "./src/middleware/auth.middleware.js";
 import { notFound, errorHandler } from "./src/middleware/errorHandler.middleware.js";
 import authRouter from "./src/routes/auth.route.js";
+import userRouter from "./src/routes/user.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -47,6 +48,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(authRouter);
+app.use(userRouter);
 
 app.use(errorHandler);
 app.use(notFound);

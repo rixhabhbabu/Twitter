@@ -20,7 +20,11 @@
       <small><%= currentUser ? `@${currentUser.username}` : "Log in to personalize" %></small>
     </div>
     <% if (currentUser) { %>
-      <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+      <form class="sidebar-logout-form" action="/logout" method="POST">
+        <button class="sidebar-logout-button" type="submit" aria-label="Log out" title="Log out">
+          <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+        </button>
+      </form>
     <% } else { %>
       <a href="/login" aria-label="Log in"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i></a>
     <% } %>

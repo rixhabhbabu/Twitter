@@ -1,0 +1,25 @@
+<% layout("layouts/boilerplate") %>
+
+<section class="profile-page">
+  <div class="profile-page-header">
+    <a class="profile-back-link" href="/" aria-label="Back to home">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <div>
+      <h1 class="h5 mb-0"><%= currentUser.displayName %></h1>
+      <small class="text-secondary">Your profile</small>
+    </div>
+  </div>
+
+  <div class="profile-cover-placeholder" aria-hidden="true"></div>
+  <div class="profile-page-content">
+    <% if (currentUser.profilePicture) { %>
+      <img class="profile-page-avatar" src="<%= currentUser.profilePicture %>" alt="<%= currentUser.displayName %>">
+    <% } else { %>
+      <i class="fa-solid fa-circle-user profile-page-avatar-placeholder" aria-hidden="true"></i>
+    <% } %>
+
+    <h2 class="h4 mb-1"><%= currentUser.displayName %></h2>
+    <p class="text-secondary mb-3">@<%= currentUser.username %></p>
+  </div>
+</section>
