@@ -53,4 +53,20 @@
       <button class="btn btn-light rounded-pill fw-bold" type="submit">Save</button>
     </div>
   </form>
+
+  <form class="profile-edit-form mt-4" action="/profile/images" method="POST" enctype="multipart/form-data">
+    <h2 class="h5 mb-3">Profile pictures</h2>
+    <div class="mb-3">
+      <label class="form-label" for="profilePicture">Profile picture</label>
+      <input class="form-control" id="profilePicture" name="profilePicture" type="file" accept="image/*">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="coverPicture">Cover picture</label>
+      <input class="form-control" id="coverPicture" name="coverPicture" type="file" accept="image/*">
+      <div class="form-text">Each image must be 5 MB or smaller.</div>
+    </div>
+    <div class="profile-edit-actions">
+      <button class="btn btn-light rounded-pill fw-bold" type="submit">Save pictures</button>
+    </div>
+  </form>
 </section>

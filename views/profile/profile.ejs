@@ -11,17 +11,17 @@
     </div>
   </div>
 
-  <% if (profileUser.coverPicture) { %>
-    <img class="profile-cover-image" src="<%= profileUser.coverPicture %>" alt="">
+  <% if (profileUser.coverPicture?.url) { %>
+    <img class="profile-cover-image" src="<%= profileUser.coverPicture.url %>" alt="">
   <% } else { %>
     <div class="profile-cover-placeholder" aria-hidden="true"></div>
   <% } %>
 
   <div class="profile-page-content">
-    <% if (profileUser.profilePicture) { %>
-      <img class="profile-page-avatar" src="<%= profileUser.profilePicture %>" alt="<%= profileUser.displayName %>">
+    <% if (profileUser.profilePicture?.url) { %>
+      <img class="profile-page-avatar" src="<%= profileUser.profilePicture.url %>" alt="<%= profileUser.displayName %>">
     <% } else { %>
-      <i class="fa-solid fa-circle-user profile-page-avatar-placeholder" aria-hidden="true"></i>
+      <img class="profile-page-avatar" src="/images/default-avatar.svg" alt="<%= profileUser.displayName %>">
     <% } %>
 
     <% if (currentUser && currentUser.username === profileUser.username) { %>

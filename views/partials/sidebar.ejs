@@ -10,10 +10,10 @@
   </nav>
   <a href="#" class="btn post-button">Post</a>
   <div class="sidebar-user">
-    <% if (currentUser && currentUser.profilePicture) { %>
-      <img class="user-avatar-image" src="<%= currentUser.profilePicture %>" alt="">
+    <% if (currentUser?.profilePicture?.url) { %>
+      <img class="user-avatar-image" src="<%= currentUser.profilePicture.url %>" alt="">
     <% } else { %>
-      <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
+      <img class="user-avatar-image" src="/images/default-avatar.svg" alt="">
     <% } %>
     <div>
       <strong><%= currentUser ? currentUser.displayName : "Guest" %></strong>

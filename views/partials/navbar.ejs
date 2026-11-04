@@ -9,10 +9,10 @@
 <div class="offcanvas offcanvas-start x-offcanvas" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
   <div class="offcanvas-header">
     <div class="user-summary">
-      <% if (currentUser && currentUser.profilePicture) { %>
-        <img class="user-avatar-image" src="<%= currentUser.profilePicture %>" alt="">
+      <% if (currentUser?.profilePicture?.url) { %>
+        <img class="user-avatar-image" src="<%= currentUser.profilePicture.url %>" alt="">
       <% } else { %>
-        <i class="fa-solid fa-circle-user user-avatar" aria-hidden="true"></i>
+        <img class="user-avatar-image" src="/images/default-avatar.svg" alt="">
       <% } %>
       <div>
         <div id="mobileMenuLabel" class="fw-bold"><%= currentUser ? currentUser.displayName : "Welcome to X" %></div>

@@ -1,6 +1,14 @@
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 
+const profileImageSchema = new mongoose.Schema(
+  {
+    url: { type: String, default: "" },
+    publicId: { type: String, default: "" },
+  },
+  { _id: false },
+);
+
 const userSchema = new mongoose.Schema(
   {
     displayName: {
@@ -34,14 +42,8 @@ const userSchema = new mongoose.Schema(
       minlength: 8,
       select: false,
     },
-    profilePicture: {
-      type: String,
-      default: "",
-    },
-    coverPicture: {
-      type: String,
-      default: "",
-    },
+    profilePicture: { type: profileImageSchema, default: () => ({}) },
+    coverPicture: { type: profileImageSchema, default: () => ({}) },
     bio: {
       type: String,
       default: "",
