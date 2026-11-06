@@ -1,0 +1,7 @@
+<% layout("layouts/boilerplate") %>
+<header class="profile-page-header"><a class="profile-back-link" href="/posts/<%= post.id %>" aria-label="Back"><i class="fa-solid fa-arrow-left"></i></a><div><strong>Edit post</strong></div></header>
+<form class="post-edit-form" id="edit-post-form" action="/posts/<%= post.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+  <label for="post-content">Post text</label><textarea id="post-content" class="form-control" name="content" maxlength="280" rows="5"><%= post.content %></textarea><small class="text-secondary">Maximum 280 characters</small>
+  <% if (post.media?.length) { %><div class="post-media-grid edit-media-preview"><% post.media.forEach((item) => { %><img class="post-media" src="<%= item.url %>" alt="Current attached media"><% }) %></div><label class="form-check mt-3"><input class="form-check-input" type="checkbox" name="removeMedia" value="true"><span class="form-check-label">Remove current media</span></label><% } %>
+  <label class="mt-3" for="post-images">Add images (up to 4 total)</label><input class="form-control" id="post-images" type="file" name="images" accept="image/*" multiple><div class="compose-image-preview" hidden aria-live="polite"></div><div class="post-edit-actions"><a class="btn btn-outline-light" href="/posts/<%= post.id %>">Cancel</a><button class="btn btn-primary" type="submit">Save changes</button></div>
+</form>

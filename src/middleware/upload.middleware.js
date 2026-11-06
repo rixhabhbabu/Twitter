@@ -63,3 +63,17 @@ export const uploadProfileImages = (req, res, next) => {
     return res.redirect("/profile/edit");
   });
 };
+
+const parsePostImages = upload.array("images", 4);
+export const uploadPostImage = (req, res, next) => {
+  parsePostImages(req, res, async (error) => {
+    if (!error) return next();
+    await Promise.all((req.files ?? []).map((file) => removeLocalFile(file.path)));
+    if (error.code === "LIMIT_FILE_SIZE") req.flash("error", "Image 5 MB ya usse chhoti honi chahiye.");
+    else if (error.code === "LIMIT_UNEXPECTED_FILE") req.flash("error", "Ek post mein maximum 4 images add kar sakte ho.");
+    else if (error.message === "Only image files are allowed.") req.flash("error", error.message);
+    else if (error instanceof multer.MulterError) req.flash("error", "Image upload nahi ho payi.");
+    else return next(error);
+    return res.redirect(req.method === "PUT" ? `/posts/${req.params.id}/edit` : "/");
+  });
+};

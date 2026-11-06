@@ -539,6 +539,48 @@ a:hover {
   font-size: 2.5rem;
 }
 
+.compose-avatar-image { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+.compose-file-label { display: inline-flex; cursor: pointer; padding: .15rem; color: var(--x-muted); font-size: 1.2rem; transition: color .15s ease; }
+.compose-file-label:hover, .compose-file-label:focus-within { color: var(--x-blue); }
+.compose-image-preview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; width: min(100%, 28rem); margin: .75rem 0; }
+.compose-image-preview[hidden] { display: none; }
+.compose-image-count { grid-column: 1 / -1; color: var(--x-muted); }
+.compose-image-preview-item { position: relative; min-width: 0; }
+.compose-image-preview-item img { display: block; width: 100%; height: 11rem; border: 1px solid var(--x-border); border-radius: 1rem; object-fit: cover; }
+.compose-image-remove { position: absolute; top: .4rem; right: .4rem; display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid rgb(255 255 255 / 35%); border-radius: 50%; background: rgb(0 0 0 / 78%); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.compose-image-remove:hover { background: #e0245e; }
+.guest-compose-prompt, .empty-feed { padding: 2rem 1rem; text-align: center; border-bottom: 1px solid var(--x-border); }
+.empty-feed i { color: var(--x-blue); font-size: 2rem; }
+.empty-feed p, .guest-compose-prompt p { color: var(--x-muted); }
+.post-card { display: flex; gap: .75rem; padding: 1rem; border-bottom: 1px solid var(--x-border); }
+.post-avatar-link { flex: 0 0 auto; }
+.post-avatar { width: 2.75rem; height: 2.75rem; }
+.post-avatar-fallback { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border-radius: 50%; background: var(--x-surface); color: var(--x-text); font-weight: 700; }
+.post-main { min-width: 0; flex: 1; }
+.post-heading { display: flex; align-items: center; gap: .35rem; color: var(--x-muted); font-size: .9rem; }
+.post-heading a { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.post-heading strong { color: var(--x-text); }
+.post-heading span, .post-heading small { color: var(--x-muted); }
+.post-date { color: var(--x-muted); }
+.post-menu-button { border: 0; background: transparent; color: var(--x-muted); }
+.post-content { margin: .5rem 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.post-media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem; margin-top: .75rem; overflow: hidden; border: 1px solid var(--x-border); border-radius: 1rem; }
+.post-media { display: block; width: 100%; height: 14rem; object-fit: cover; background: var(--x-surface); }
+.post-media-grid.media-count-1 { grid-template-columns: minmax(0, 1fr); }
+.post-media-grid.media-count-1 .post-media { height: 22rem; }
+.post-media-grid.media-count-3 .post-media:first-child { grid-row: span 2; height: 28.35rem; }
+.media-attribution { display: block; padding: .45rem .6rem; color: var(--x-muted); font-size: .72rem; overflow-wrap: anywhere; }
+.media-attribution a { color: var(--x-blue); }
+.post-actions { display: flex; justify-content: space-between; max-width: 28rem; margin-top: .75rem; }
+.post-actions a, .post-actions button { display: inline-flex; align-items: center; gap: .45rem; border: 0; background: transparent; color: var(--x-muted); font-size: .85rem; }
+.post-actions button:disabled { opacity: .75; }
+.post-actions a:hover { color: var(--x-blue); }
+.post-edit-form { padding: 1.25rem; }
+.post-edit-form > label { display: block; margin-bottom: .5rem; }
+.post-edit-form textarea, .post-edit-form input[type="file"] { border-color: var(--x-border); background: var(--x-bg); color: var(--x-text); }
+.edit-media-preview { max-width: 32rem; }
+.post-edit-actions { display: flex; justify-content: flex-end; gap: .75rem; margin-top: 1.25rem; }
+
 .compose-content {
   flex: 1;
 }
@@ -609,10 +651,9 @@ a:hover {
 }
 
 .compose-tools button span {
-  position: absolute;
-  top: 0.35rem;
-  left: 0.1rem;
-  font-size: 0.42rem;
+  position: static;
+  font-size: 0.75rem;
+  line-height: 1;
   font-weight: 800;
 }
 

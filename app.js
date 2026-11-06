@@ -12,6 +12,8 @@ import { notFound, errorHandler } from "./src/middleware/errorHandler.middleware
 import authRouter from "./src/routes/auth.route.js";
 import userRouter from "./src/routes/user.route.js";
 import profileRouter from "./src/routes/profile.route.js";
+import postRouter from "./src/routes/post.route.js";
+import Post from "./src/models/Post.model.js";
 
 
 const app = express();
@@ -24,7 +26,10 @@ app.set("views", path.join(import.meta.dirname, "views"));
 app.use(express.static(path.join(import.meta.dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(methodOverride("_method"));
+app.use(methodOverride((req) => {
+  const override = req.body?._method ?? req.query?._method;
+  return ["PUT", "DELETE"].includes(String(override).toUpperCase()) ? override : undefined;
+}));
 app.use(
   session({
     store: MongoStore.create({ mongoUrl: process.env.MONGO_DB_URL }),
@@ -45,13 +50,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.render("home/home");
+app.get("/", async (req, res, next) => {
+  try {
+    const posts = await Post.find().sort({ createdAt: -1 }).limit(50)
+      .populate("author", "displayName username profilePicture").lean();
+    res.render("home/home", { posts });
+  } catch (error) { next(error); }
 });
 
 app.use(authRouter);
 app.use(userRouter);
 app.use(profileRouter);
+app.use(postRouter);
 
 app.use(errorHandler);
 app.use(notFound);

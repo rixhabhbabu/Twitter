@@ -2,32 +2,27 @@
 <section class="home-tabs" aria-label="Timeline tabs">
   <a class="home-tab active" href="/">For you</a>
   <a class="home-tab" href="/">Following</a>
-  <button class="home-add-button" type="button" aria-label="Add timeline">
-    <i class="fa-solid fa-plus" aria-hidden="true"></i>
-  </button>
+  <span></span>
 </section>
 
-<section class="compose-box" aria-label="Create a post">
-  <i class="fa-solid fa-circle-user compose-avatar" aria-hidden="true"></i>
+<% if (currentUser) { %>
+<form class="compose-box" action="/posts" method="POST" enctype="multipart/form-data" id="create-post-form">
+  <% if (currentUser.profilePicture?.url) { %><img class="user-avatar-image compose-avatar-image" src="<%= currentUser.profilePicture.url %>" alt=""><% } else { %><i class="fa-solid fa-circle-user compose-avatar" aria-hidden="true"></i><% } %>
   <div class="compose-content">
-    <textarea class="compose-input" rows="1" placeholder="What's happening?" aria-label="What's happening?"></textarea>
-    <button class="reply-permission" type="button">
-      <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
-      Everyone can reply
-    </button>
+    <textarea class="compose-input" name="content" rows="2" maxlength="280" placeholder="What's happening?" aria-label="What's happening?"></textarea>
+    <div class="compose-image-preview" hidden aria-live="polite"></div>
     <div class="compose-actions">
-      <div class="compose-tools" aria-label="Post options">
-        <button type="button" aria-label="Add image"><i class="fa-regular fa-image" aria-hidden="true"></i></button>
-        <button type="button" aria-label="Add GIF"><i class="fa-regular fa-file-image" aria-hidden="true"></i><span>GIF</span></button>
-        <button type="button" aria-label="Add poll"><i class="fa-solid fa-sliders" aria-hidden="true"></i></button>
-        <button type="button" aria-label="Add emoji"><i class="fa-regular fa-face-smile" aria-hidden="true"></i></button>
-        <button type="button" aria-label="Schedule post"><i class="fa-regular fa-calendar-plus" aria-hidden="true"></i></button>
-        <button type="button" aria-label="Add location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></button>
-        <button type="button" aria-label="Add content warning"><i class="fa-regular fa-flag" aria-hidden="true"></i></button>
+      <div class="compose-tools">
+        <label class="compose-file-label" aria-label="Add up to 4 images" title="Add up to 4 images"><i class="fa-regular fa-image"></i><input type="file" name="images" accept="image/*" multiple hidden></label>
       </div>
-      <button class="btn compose-post-button" type="button">Post</button>
+      <button class="btn compose-post-button" type="submit">Post</button>
     </div>
   </div>
-</section>
+</form>
+<% } else { %>
+<div class="guest-compose-prompt"><p>Join the conversation</p><a href="/login" class="btn btn-primary">Log in to post</a> <a href="/register" class="btn btn-outline-light">Create account</a></div>
+<% } %>
 
-<button class="show-posts-button" type="button">Show 35 posts</button>
+<% if (posts.length) { %><% posts.forEach((post) => { %><%- include("../partials/post_card", { post }) %><% }) %><% } else { %>
+<div class="empty-feed"><i class="fa-regular fa-comments"></i><h2>Welcome to your timeline</h2><p>Jab koi post karega, woh yahan dikhegi.</p></div>
+<% } %>
